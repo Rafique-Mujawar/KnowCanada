@@ -8,6 +8,4 @@ import media.rafique.com.utilitymodule.error.KCError;
  */
 public interface BaseAPIErrorCallback {
   void onError(KCError error);
-
-  void onKCFail(KCError error);
 }
