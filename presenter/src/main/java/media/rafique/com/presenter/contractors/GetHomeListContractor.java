@@ -14,7 +14,7 @@ public interface GetHomeListContractor {
 
   interface GetHomeListView extends BaseView {
     void onGetHomeListSuccess(String title, ArrayList<HomeResponseItem> list);
-
+    void onEmptyHomeList();
     void onGetHomeListError(KCError error);
   }
 

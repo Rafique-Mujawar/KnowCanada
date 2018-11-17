@@ -1,5 +1,6 @@
 package media.rafique.com.presenter.impl;
 
+import media.rafique.com.model.apiservice.GetHomeListService;
 import media.rafique.com.model.base.ExecuteInterface;
 import media.rafique.com.model.callback.GetHomeListCallback;
 import media.rafique.com.model.requests.NoBodyRequest;
@@ -17,9 +18,9 @@ public class GetHomeListPresenter implements GetHomeListActionListener,
   private GetHomeListView mView;
   private ExecuteInterface<NoBodyRequest> mService;
 
-  public GetHomeListPresenter(GetHomeListView mView, ExecuteInterface<NoBodyRequest> mService) {
+  public GetHomeListPresenter(GetHomeListView mView) {
     this.mView = mView;
-    this.mService = mService;
+    this.mService = new GetHomeListService(this);
   }
 
   @Override
@@ -29,16 +30,15 @@ public class GetHomeListPresenter implements GetHomeListActionListener,
 
   @Override
   public void onGetHomeListSuccess(GetHomeResponse response) {
-    mView.onGetHomeListSuccess(response.getTitle(), response.getRows());
+    if (response.getRows().isEmpty()) {
+      mView.onEmptyHomeList();
+    } else {
+      mView.onGetHomeListSuccess(response.getTitle(), response.getRows());
+    }
   }
 
   @Override
   public void onError(KCError error) {
-    mView.onGetHomeListError(error);
-  }
-
-  @Override
-  public void onKCFail(KCError error) {
     mView.onGetHomeListError(error);
   }
 }
