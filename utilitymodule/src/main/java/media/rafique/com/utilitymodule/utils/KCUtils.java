@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.text.TextUtils;
 
 import media.rafique.com.utilitymodule.R;
 import media.rafique.com.utilitymodule.constants.KnowCanadaConstants;
+import media.rafique.com.utilitymodule.data.HomeResponseItem;
 
 /**
  * @author Rafique Mujawar
@@ -62,4 +64,16 @@ public class KCUtils {
         .show();
   }
 
+  /**
+   * Method to check if Home Response item is valid or not.if one of parameter is having non
+   * empty value then item is considered as valid else invalid
+   *
+   * @param item {@link HomeResponseItem}
+   * @return true if one of parameter is having non
+   * empty value else false
+   */
+  public static boolean isValidFactItem(HomeResponseItem item) {
+    return null != item && (!TextUtils.isEmpty(item.getTitle()) || !TextUtils.isEmpty(item
+        .getDescription()) || !TextUtils.isEmpty(item.getImageHref()));
+  }
 }

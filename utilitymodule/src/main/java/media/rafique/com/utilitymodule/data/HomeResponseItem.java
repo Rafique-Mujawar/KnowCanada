@@ -4,12 +4,25 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
+ * holder class for Single item of Canada facts fetched from server
+ *
  * @author Rafique Mujawar
  * Date 17-11-2018
  */
-public class HomeResponseItem implements Parcelable{
+public class HomeResponseItem implements Parcelable {
+  /**
+   * title of he fact
+   */
   private String title;
+
+  /**
+   * Description of the fact
+   */
   private String description;
+
+  /**
+   * supporting Image url for the facts
+   */
   private String imageHref;
 
   protected HomeResponseItem(Parcel in) {
