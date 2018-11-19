@@ -21,6 +21,11 @@ import retrofit2.Response;
 public abstract class BaseService<RESPONSE, REQUEST> implements ExecuteInterface<REQUEST> {
   public final String TAG = this.getClass().getSimpleName();
 
+  /**
+   * Generic method to filter the response.
+   *
+   * @param call {@link Call}
+   */
   protected void filterCall(Call<RESPONSE> call) {
     call.enqueue(new Callback<RESPONSE>() {
       @Override
@@ -44,7 +49,17 @@ public abstract class BaseService<RESPONSE, REQUEST> implements ExecuteInterface
     });
   }
 
+  /**
+   * Generic abstract method for valid server response
+   *
+   * @param echoMeData expected format of data
+   */
   public abstract void onKCResponse(RESPONSE echoMeData);
 
+  /**
+   * generic abstract method for any error occurred
+   *
+   * @param error {@link KCError}
+   */
   public abstract void onKCError(KCError error);
 }

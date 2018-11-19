@@ -8,6 +8,7 @@ import retrofit2.http.GET;
 /**
  * @author Rafique Mujawar
  * Date 17-11-2018
+ * API interace for GET home list
  */
 public interface GetHomeListAPI {
   @GET(APIConstants.URL_GET_HOME_LIST)

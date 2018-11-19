@@ -14,13 +14,27 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * @author Rafique Mujawar
  * Date 17-11-2018
+ * Common Session manager for network calls.
  */
 public class SessionManager {
+  /**
+   * Time out period in seconds for network call
+   */
   private static final int REQUEST_TIMEOUT = 75;
   private volatile static SessionManager sessionManager = null;
+  /**
+   * Base ur for API calls
+   */
   private static String baseUrl = "https://dl.dropboxusercontent.com/";
+
+  /**
+   * Instance of Retrofit adapter
+   */
   private Retrofit restAdapter;
 
+  /**
+   * Method to create the instance of retrofit
+   */
   private static void createRestAdapter() {
     sessionManager.restAdapter = new Retrofit.Builder().baseUrl(baseUrl).client(getLoggerClient())
         .addConverterFactory(GsonConverterFactory.create()).build();
@@ -65,6 +79,11 @@ public class SessionManager {
     return builder.build();
   }
 
+  /**
+   * Getter method for retrofit instance
+   *
+   * @return restAdapter
+   */
   public Retrofit getRestAdapter() {
     return restAdapter;
   }

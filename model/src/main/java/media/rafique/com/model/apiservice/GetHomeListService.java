@@ -15,6 +15,7 @@ import retrofit2.Call;
 /**
  * @author Rafique Mujawar
  * Date 17-11-2018
+ * Service class for Get home list API
  */
 public class GetHomeListService extends BaseService<GetHomeResponse, NoBodyRequest> {
   private GetHomeListCallback mCallback;
@@ -23,16 +24,31 @@ public class GetHomeListService extends BaseService<GetHomeResponse, NoBodyReque
     this.mCallback = mCallback;
   }
 
+  /**
+   * method for valid server response for Get home list API
+   *
+   * @param echoMeData expected format of data
+   */
   @Override
   public void onKCResponse(GetHomeResponse echoMeData) {
     mCallback.onGetHomeListSuccess(echoMeData);
   }
 
+  /**
+   * Method for any error occurred
+   *
+   * @param error {@link KCError}
+   */
   @Override
   public void onKCError(KCError error) {
     mCallback.onError(error);
   }
 
+  /**
+   * Common method to be called by All presenters.
+   *
+   * @param noBody Generic request
+   */
   @Override
   public void executeService(NoBodyRequest noBody) {
     Call<GetHomeResponse> call = null;

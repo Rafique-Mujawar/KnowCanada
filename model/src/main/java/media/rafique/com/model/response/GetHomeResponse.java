@@ -10,6 +10,7 @@ import media.rafique.com.utilitymodule.data.HomeResponseItem;
 /**
  * @author Rafique Mujawar
  * Date 17-11-2018
+ * Holder class for Get Home list API response
  */
 public class GetHomeResponse implements Parcelable {
   private String title;
