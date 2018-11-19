@@ -10,6 +10,7 @@ import media.rafique.com.knowcanada.R;
 /**
  * @author Rafique Mujawar
  * Date 17-11-2018
+ * view holder for facts entry
  */
 public class CanadaFactsViewHolder extends RecyclerView.ViewHolder {
   private TextView tvTitle;

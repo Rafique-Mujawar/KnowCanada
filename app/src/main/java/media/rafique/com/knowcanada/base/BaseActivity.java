@@ -12,6 +12,9 @@ import media.rafique.com.presenter.base.BaseView;
 import media.rafique.com.utilitymodule.constants.KnowCanadaConstants;
 import media.rafique.com.utilitymodule.utils.KCUtils;
 
+/**
+ * Base Activity for the Application
+ */
 public abstract class BaseActivity extends AppCompatActivity implements BaseView {
 
   protected Toolbar toolbar;

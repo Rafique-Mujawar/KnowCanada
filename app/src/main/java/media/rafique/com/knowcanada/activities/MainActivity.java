@@ -8,6 +8,12 @@ import media.rafique.com.knowcanada.base.BaseActivity;
 import media.rafique.com.knowcanada.fragments.HomeFragment;
 import media.rafique.com.knowcanada.listenres.OnFragmentInteractionListener;
 
+/*
+ * @author Rafique Mujawar
+ * Date 19-11-2018
+ * Main activity of Application
+ *
+ * */
 public class MainActivity extends BaseActivity implements OnFragmentInteractionListener {
 
   @Override
@@ -18,18 +24,29 @@ public class MainActivity extends BaseActivity implements OnFragmentInteractionL
     loadFragments();
   }
 
+  /**
+   * Method to load fragment of the activity
+   */
   private void loadFragments() {
     HomeFragment fragment = HomeFragment.newInstance(null);
     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment)
         .commit();
   }
 
+  /**
+   * Method to initialise the toolbar and set the default title
+   */
   private void initToolBar() {
     Toolbar toolbar = findViewById(R.id.toolbar);
     setToolbar(toolbar);
     setScreenTitle(getString(R.string.activity_title));
   }
 
+  /**
+   * Method to set Activity title from Fragment
+   *
+   * @param title Title of the screen
+   */
   @Override
   public void setToolbarTitle(String title) {
     setScreenTitle(title);

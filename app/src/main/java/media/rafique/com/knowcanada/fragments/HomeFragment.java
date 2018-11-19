@@ -74,6 +74,9 @@ public class HomeFragment extends BaseFragment implements GetHomeListView {
     return view;
   }
 
+  /**
+   * Method to initialise all listeners
+   */
   private void initListeners() {
     mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
       @Override
@@ -83,10 +86,18 @@ public class HomeFragment extends BaseFragment implements GetHomeListView {
     });
   }
 
+  /**
+   * Method to initialise all presenters
+   */
   private void initPresenters() {
     mActionListener = new GetHomeListPresenter(this);
   }
 
+  /**
+   * Method to initialise views
+   *
+   * @param view {@link View}
+   */
   private void initViews(View view) {
     mAdapter = new HomeListAdapter();
     mHomeRecyclerView = view.findViewById(R.id.rv_home_list);
@@ -96,15 +107,23 @@ public class HomeFragment extends BaseFragment implements GetHomeListView {
     mEmptyListText = view.findViewById(R.id.tv_empty_list);
   }
 
+  /**
+   * Method to setup the default screen
+   */
   private void setupScreen() {
     removeEmptyListMessage();
     loadHomeData();
   }
 
+  /**
+   * Method to laod data from server
+   */
   private void loadHomeData() {
     if (isNetworkAvailable()) {
+      mSwipeRefreshLayout.setRefreshing(true);
       mActionListener.getHomeList();
     } else {
+      showEmptyListMessage();
       showNetworkError();
     }
   }
@@ -126,27 +145,58 @@ public class HomeFragment extends BaseFragment implements GetHomeListView {
     mListener = null;
   }
 
+  /**
+   * Callback method for Successfully fetching home list data
+   *
+   * @param list list of canadian facts
+   */
   @Override
-  public void onGetHomeListSuccess(String title, ArrayList<HomeResponseItem> list) {
-    mListener.setToolbarTitle(title);
+  public void onGetHomeListSuccess(ArrayList<HomeResponseItem> list) {
     mAdapter.setItems(list);
+    removeEmptyListMessage();
   }
 
+  /**
+   * Callback method for Successfully fetching home list title
+   *
+   * @param title title of the data
+   */
+  @Override
+  public void onHomeGetListTitle(String title) {
+    mListener.setToolbarTitle(title);
+  }
+
+  /**
+   * Callback method for empty list
+   */
   @Override
   public void onEmptyHomeList() {
     showEmptyListMessage();
   }
 
+  /**
+   * Method to show empty list information
+   */
   void showEmptyListMessage() {
+    mSwipeRefreshLayout.setRefreshing(false);
     mHomeRecyclerView.setVisibility(View.GONE);
     mEmptyListText.setVisibility(View.VISIBLE);
   }
 
+  /**
+   * Method to hide empty list information and show list of items
+   */
   void removeEmptyListMessage() {
+    mSwipeRefreshLayout.setRefreshing(false);
     mHomeRecyclerView.setVisibility(View.VISIBLE);
     mEmptyListText.setVisibility(View.GONE);
   }
 
+  /**
+   * Callback method for error occurred while fetching home data
+   *
+   * @param error {@link KCError}
+   */
   @Override
   public void onGetHomeListError(KCError error) {
     showEmptyListMessage();
