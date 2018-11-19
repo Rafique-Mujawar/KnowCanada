@@ -34,6 +34,12 @@ public class HomeResponseItem implements Parcelable {
   public HomeResponseItem() {
   }
 
+  public HomeResponseItem(String title, String description, String imageHref) {
+    this.title = title;
+    this.description = description;
+    this.imageHref = imageHref;
+  }
+
   @Override
   public void writeToParcel(Parcel dest, int flags) {
     dest.writeString(title);

@@ -3,7 +3,9 @@ apply plugin: 'com.android.library'
 android {
   compileSdkVersion 28
 
-
+  testOptions {
+    unitTests.returnDefaultValues = true
+  }
 
   defaultConfig {
     minSdkVersion 25
