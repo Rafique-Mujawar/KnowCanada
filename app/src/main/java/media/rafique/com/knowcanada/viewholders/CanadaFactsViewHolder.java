@@ -16,12 +16,15 @@ public class CanadaFactsViewHolder extends RecyclerView.ViewHolder {
   private TextView tvTitle;
   private TextView tvDescription;
   private ImageView ivFact;
+  private ImageView ivNext;
 
   public CanadaFactsViewHolder(View view) {
     super(view);
-    tvTitle = view.findViewById(R.id.tv_title);
-    tvDescription = view.findViewById(R.id.tv_description);
-    ivFact = view.findViewById(R.id.iv_event_photo);
+    this.tvTitle = view.findViewById(R.id.tv_title);
+    this.tvDescription = view.findViewById(R.id.tv_description);
+    this.ivFact = view.findViewById(R.id.iv_event_photo);
+    this.ivNext = view.findViewById(R.id.iv_next);
+
   }
 
   public TextView getTvTitle() {
@@ -48,4 +51,11 @@ public class CanadaFactsViewHolder extends RecyclerView.ViewHolder {
     this.ivFact = ivFact;
   }
 
+  public ImageView getIvNext() {
+    return ivNext;
+  }
+
+  public void setIvNext(ImageView ivNext) {
+    this.ivNext = ivNext;
+  }
 }

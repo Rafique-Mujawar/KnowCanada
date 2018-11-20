@@ -2,6 +2,7 @@ package media.rafique.com.knowcanada.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,10 +45,19 @@ public class HomeListAdapter extends RecyclerView.Adapter<CanadaFactsViewHolder>
   @Override
   public void onBindViewHolder(@NonNull CanadaFactsViewHolder holder, int position) {
     HomeResponseItem item = items.get(position);
-    holder.getTvDescription().setText(item.getDescription());
-    holder.getTvTitle().setText(item.getTitle());
-    Picasso.get().load(item.getImageHref()).placeholder(R.drawable.ic_launcher_background)
-        .into(holder.getIvFact());
+    if (!TextUtils.isEmpty(item.getDescription())) {
+      holder.getTvDescription().setText(item.getDescription());
+    }
+    if (!TextUtils.isEmpty(item.getTitle())) {
+      holder.getTvTitle().setText(item.getTitle());
+    }
+    if (!TextUtils.isEmpty(item.getImageHref())) {
+      Picasso.get().load(item.getImageHref()).placeholder(R.drawable.ic_launcher_background)
+          .into(holder.getIvFact());
+    } else {
+      holder.getIvFact().setImageResource(R.drawable.ic_launcher_background);
+    }
+
   }
 
   @Override
