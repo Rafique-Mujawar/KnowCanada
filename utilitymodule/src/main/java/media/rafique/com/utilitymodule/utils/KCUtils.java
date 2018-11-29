@@ -8,7 +8,6 @@ import android.net.NetworkInfo;
 import android.text.TextUtils;
 
 import media.rafique.com.utilitymodule.R;
-import media.rafique.com.utilitymodule.constants.KnowCanadaConstants;
 import media.rafique.com.utilitymodule.data.HomeResponseItem;
 
 /**
@@ -23,24 +22,16 @@ public class KCUtils {
    * @param context Context.
    * @return status of network connection.
    */
-  public static int getNetworkStatus(Context context) {
+  public static boolean isConnectedToNetwork(Context context) {
     if (context != null) {
       ConnectivityManager cm =
           (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
       if (cm != null) {
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        if (null != activeNetwork) {
-          if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
-            return ConnectivityManager.TYPE_WIFI;
-          }
-
-          if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
-            return ConnectivityManager.TYPE_MOBILE;
-          }
-        }
+        return null != activeNetwork && activeNetwork.isConnected();
       }
     }
-    return KnowCanadaConstants.NOT_CONNECTION_STATUS;
+    return false;
   }
 
   /**
