@@ -24,9 +24,4 @@ public class KnowCanadaConstants {
    * Error Code for other issue
    */
   public static final String ERROR_OTHER = "ERROR_OTHER";
-
-  /**
-   * No network connection status
-   */
-  public static final int NOT_CONNECTION_STATUS = 0;
 }
