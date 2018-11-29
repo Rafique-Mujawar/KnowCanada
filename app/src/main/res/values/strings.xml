@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">KnowCanada</string>
-    <string name="no_network_title">Netowrk not available</string>
-    <string name="no_network_msg">Unable to connect to nwtwork.Please reconnect to network and try again.</string>
+    <string name="no_network_title">Network not available</string>
+    <string name="no_network_msg">Unable to connect to network.Please reconnect to network and
+        try again.</string>
     <string name="canada_facts_image_description">Canada facts image place holder</string>
     <string name="blank_home_list">List of Canada Facts is Empty.Please try again later.</string>
     <string name="activity_title">Know About Canada</string>
+    <string name="error_title_not_available">Not available</string>
+    <string name="error_title_info_available">No Info available</string>
 </resources>
