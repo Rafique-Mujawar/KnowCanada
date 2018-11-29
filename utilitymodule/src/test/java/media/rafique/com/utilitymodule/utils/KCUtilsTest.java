@@ -62,4 +62,10 @@ public class KCUtilsTest {
     HomeResponseItem item = new HomeResponseItem();
     Assert.assertFalse(KCUtils.isValidFactItem(item));
   }
+
+  @Test
+  public void testValidFactItemWithNullData() {
+    HomeResponseItem item = null;
+    Assert.assertFalse(KCUtils.isValidFactItem(item));
+  }
 }
