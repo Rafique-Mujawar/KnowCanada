@@ -163,7 +163,9 @@ public class HomeFragment extends BaseFragment implements GetHomeListView {
    */
   @Override
   public void onHomeGetListTitle(String title) {
-    mListener.setToolbarTitle(title);
+    if (null != mListener) {
+      mListener.setToolbarTitle(title);
+    }
   }
 
   /**
