@@ -8,12 +8,12 @@
     tools:context=".activities.MainActivity">
 
     <android.support.v7.widget.Toolbar
-        android:background="@android:color/white"
+        android:background="@color/colorPrimaryDark"
         android:id="@+id/toolbar"
         android:layout_height="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:titleTextColor="@color/colorPrimaryDark" />
+        app:titleTextColor="@android:color/white" />
 
     <FrameLayout
         android:id="@+id/fragment_container"
