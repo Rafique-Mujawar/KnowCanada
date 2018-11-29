@@ -9,7 +9,6 @@ import android.text.TextUtils;
 
 import media.rafique.com.knowcanada.R;
 import media.rafique.com.presenter.base.BaseView;
-import media.rafique.com.utilitymodule.constants.KnowCanadaConstants;
 import media.rafique.com.utilitymodule.utils.KCUtils;
 
 /**
@@ -70,8 +69,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
    */
   @Override
   public boolean isNetworkAvailable() {
-    return !isFinishing() && !isDestroyed() && KCUtils.getNetworkStatus(this) !=
-        KnowCanadaConstants
-            .NOT_CONNECTION_STATUS;
+    return !isFinishing() && !isDestroyed() && KCUtils.isConnectedToNetwork(this);
   }
 }

@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 
 import media.rafique.com.knowcanada.R;
 import media.rafique.com.presenter.base.BaseView;
-import media.rafique.com.utilitymodule.constants.KnowCanadaConstants;
 import media.rafique.com.utilitymodule.utils.KCUtils;
 
 /**
@@ -46,8 +45,6 @@ public abstract class BaseFragment extends Fragment implements BaseView {
    */
   @Override
   public boolean isNetworkAvailable() {
-    return isAdded() && KCUtils.getNetworkStatus(getViewContext()) !=
-        KnowCanadaConstants
-            .NOT_CONNECTION_STATUS;
+    return null != getViewContext() && isAdded() && KCUtils.isConnectedToNetwork(getViewContext());
   }
 }

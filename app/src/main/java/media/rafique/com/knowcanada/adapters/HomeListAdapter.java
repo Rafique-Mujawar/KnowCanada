@@ -47,9 +47,13 @@ public class HomeListAdapter extends RecyclerView.Adapter<CanadaFactsViewHolder>
     HomeResponseItem item = items.get(position);
     if (!TextUtils.isEmpty(item.getDescription())) {
       holder.getTvDescription().setText(item.getDescription());
+    } else {
+      holder.getTvDescription().setText(R.string.error_title_info_available);
     }
     if (!TextUtils.isEmpty(item.getTitle())) {
       holder.getTvTitle().setText(item.getTitle());
+    } else {
+      holder.getTvTitle().setText(R.string.error_title_not_available);
     }
     if (!TextUtils.isEmpty(item.getImageHref())) {
       Picasso.get().load(item.getImageHref()).placeholder(R.drawable.ic_launcher_background)
