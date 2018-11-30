@@ -1,4 +1,4 @@
-package media.rafique.com.model.apiservice;
+package media.rafique.com.model.serviceImpl;
 
 
 import java.io.IOException;
@@ -7,8 +7,8 @@ import media.rafique.com.model.api.GetHomeListAPI;
 import media.rafique.com.model.base.BaseService;
 import media.rafique.com.model.callback.GetHomeListCallback;
 import media.rafique.com.model.manager.SessionManager;
-import media.rafique.com.model.requests.NoBodyRequest;
 import media.rafique.com.model.response.GetHomeResponse;
+import media.rafique.com.model.service.GetHomeListService;
 import media.rafique.com.utilitymodule.error.KCError;
 import retrofit2.Call;
 
@@ -17,11 +17,11 @@ import retrofit2.Call;
  * Date 17-11-2018
  * Service class for Get home list API
  */
-public class GetHomeListService extends BaseService<GetHomeResponse, NoBodyRequest> {
+public class GetHomeListServiceImpl extends BaseService<GetHomeResponse>
+    implements GetHomeListService {
   private GetHomeListCallback mCallback;
 
-  public GetHomeListService(GetHomeListCallback mCallback) {
-    this.mCallback = mCallback;
+  public GetHomeListServiceImpl() {
   }
 
   /**
@@ -46,11 +46,9 @@ public class GetHomeListService extends BaseService<GetHomeResponse, NoBodyReque
 
   /**
    * Common method to be called by All presenters.
-   *
-   * @param noBody Generic request
    */
   @Override
-  public void executeService(NoBodyRequest noBody) {
+  public void executeService() {
     Call<GetHomeResponse> call = null;
     try {
       call = SessionManager.getSessionManager().getRestAdapter().create(GetHomeListAPI.class)
@@ -59,5 +57,16 @@ public class GetHomeListService extends BaseService<GetHomeResponse, NoBodyReque
       e.printStackTrace();
     }
     filterCall(call);
+  }
+
+  /**
+   * Service Method to be called by presenters.
+   *
+   * @param callback callback interface
+   */
+  @Override
+  public void fetchHomeList(GetHomeListCallback callback) {
+    this.mCallback = callback;
+    executeService();
   }
 }

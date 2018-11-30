@@ -4,11 +4,10 @@ import android.text.TextUtils;
 
 import java.util.Iterator;
 
-import media.rafique.com.model.apiservice.GetHomeListService;
-import media.rafique.com.model.base.ExecuteInterface;
 import media.rafique.com.model.callback.GetHomeListCallback;
-import media.rafique.com.model.requests.NoBodyRequest;
 import media.rafique.com.model.response.GetHomeResponse;
+import media.rafique.com.model.service.GetHomeListService;
+import media.rafique.com.model.serviceImpl.GetHomeListServiceImpl;
 import media.rafique.com.presenter.contractors.GetHomeListContractor.GetHomeListActionListener;
 import media.rafique.com.presenter.contractors.GetHomeListContractor.GetHomeListView;
 import media.rafique.com.utilitymodule.data.HomeResponseItem;
@@ -31,12 +30,24 @@ public class GetHomeListPresenter implements GetHomeListActionListener,
   /**
    * Instance of Service for Get Home List API
    */
-  private ExecuteInterface<NoBodyRequest> mService;
+  private GetHomeListService mService;
 
 
   public GetHomeListPresenter(GetHomeListView mView) {
     this.mView = mView;
-    this.mService = new GetHomeListService(this);
+    this.mService = new GetHomeListServiceImpl();
+  }
+
+
+  /**
+   * Use this constructor Only for UNIT TESTING
+   *
+   * @param mView   Mocked instance of GetHomeListView from Test class
+   * @param service Mocked instance of GetHomeListService from Test class
+   */
+  public GetHomeListPresenter(GetHomeListView mView, GetHomeListService service) {
+    this.mView = mView;
+    this.mService = service;
   }
 
   /**
@@ -44,7 +55,7 @@ public class GetHomeListPresenter implements GetHomeListActionListener,
    */
   @Override
   public void getHomeList() {
-    mService.executeService(new NoBodyRequest());
+    mService.fetchHomeList(this);
   }
 
   /**
@@ -55,7 +66,7 @@ public class GetHomeListPresenter implements GetHomeListActionListener,
   @Override
   public void onGetHomeListSuccess(GetHomeResponse response) {
     //If response is empty
-    if (response.getRows().isEmpty()) {
+    if (null == response.getRows() || response.getRows().isEmpty()) {
       mView.onEmptyHomeList();
     } else {
       Iterator<HomeResponseItem> iterator = response.getRows().iterator();

@@ -18,7 +18,7 @@ import retrofit2.Response;
  * Date 17-11-2018
  * Base Service to filter the response and error code and provide appropriate
  */
-public abstract class BaseService<RESPONSE, REQUEST> implements ExecuteInterface<REQUEST> {
+public abstract class BaseService<RESPONSE> implements ExecuteInterface {
   public final String TAG = this.getClass().getSimpleName();
 
   /**
