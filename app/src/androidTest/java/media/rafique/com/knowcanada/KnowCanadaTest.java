@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matchers;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -87,5 +88,10 @@ public class KnowCanadaTest {
     }
     assertNotNull(actionBar.getTitle());
     assertTrue(!actionBar.getTitle().toString().isEmpty());
+  }
+
+  @After
+  public void tearDown() {
+    mMainActivity = null;
   }
 }

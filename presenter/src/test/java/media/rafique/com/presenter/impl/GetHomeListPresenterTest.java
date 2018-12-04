@@ -2,6 +2,7 @@ package media.rafique.com.presenter.impl;
 
 import android.text.TextUtils;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -156,5 +157,11 @@ public class GetHomeListPresenterTest {
     Mockito.verify(mService).fetchHomeList(mCallback.capture());
     mCallback.getValue().onError(error);
     Mockito.verify(mView).onGetHomeListError(error);
+  }
+
+
+  @After
+  public void tearDown() {
+    mPresenter = null;
   }
 }
