@@ -55,12 +55,7 @@ public class HomeListAdapter extends RecyclerView.Adapter<CanadaFactsViewHolder>
     } else {
       holder.getTvTitle().setText(R.string.error_title_not_available);
     }
-    if (!TextUtils.isEmpty(item.getImageHref())) {
-      Picasso.get().load(item.getImageHref()).placeholder(R.drawable.ic_launcher_background)
-          .into(holder.getIvFact());
-    } else {
-      holder.getIvFact().setImageResource(R.drawable.ic_launcher_background);
-    }
+    Picasso.get().load(item.getImageHref()).into(holder.getIvFact());
   }
 
   @Override
