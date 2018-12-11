@@ -16,7 +16,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import media.rafique.com.knowcanada.activities.MainActivity;
+import media.rafique.com.knowcanada.view.activities.MainActivity;
 
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;

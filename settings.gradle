@@ -1,1 +1,1 @@
-include ':app', ':presenter', ':model', ':utilitymodule'
+include ':app'

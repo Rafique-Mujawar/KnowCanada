@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:paddingEnd="@dimen/default_margin"
         android:paddingStart="@dimen/default_margin"
-        tools:context=".fragments.HomeFragment">
+        tools:context=".view.fragments.HomeFragment">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_home_list"
